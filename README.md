@@ -254,6 +254,23 @@ pnpm --filter backend test   # vitest run
 pnpm --filter frontend test  # vitest run --passWithNoTests
 ```
 
+Run backend tests with coverage:
+
+```bash
+pnpm --filter backend test --coverage
+```
+
+### Backend coverage (23 tests across 4 files)
+
+| File | Statements | Branches | Functions | Lines |
+|---|---|---|---|---|
+| **All files** | **95.23%** | **88.88%** | **100%** | **95.16%** |
+| src/app.ts | 100% | 75% | 100% | 100% |
+| src/db/client.ts | 57.14% | 50% | 100% | 57.14% |
+| src/routes/todos.ts | 100% | 100% | 100% | 100% |
+
+> The uncovered lines in `client.ts` are the directory-creation guard (`mkdirSync`) that only runs when `DATABASE_PATH` is not `:memory:` — a path exercised only in production with a real file path.
+
 ---
 
 ## Build
